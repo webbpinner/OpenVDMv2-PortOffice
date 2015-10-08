@@ -1,0 +1,233 @@
+$(function () {
+    'use strict';
+
+    var max_values = 5;
+    
+    Highcharts.setOptions({
+        colors: ['#337ab7', '#5cb85c', '#d9534f', '#f0ad4e', '#606060']
+    });
+    
+    var geoJSONTypes = ['gga-furuno', 'gga-garmin741', 'gga-nstarwaas', 'gga-spectracom'],
+        tmsTypes = ['geotiff'],
+        jsonTypes = ['met', 'gnss-adu2', 'gnss-adu5', 'hdt-gyro1', 'hdt-gyro2', 'twind-bow', 'twind-port', 'twind-stbd', 'tsg-sbe45'],
+    
+        subPages = [];
+    
+    subPages['gga-furuno'] = 'navigation';
+    subPages['gga-garmin741'] = 'navigation';
+    subPages['gga-nstarwaas'] = 'navigation';
+    subPages['gga-spectracom'] = 'navigation';
+    
+    subPages['geotiff'] = 'navigation';
+    
+    subPages['gnss-adu2'] = 'navigation';
+    subPages['gnss-adu5'] = 'navigation';
+    
+    subPages['hdt-gyro1'] = 'navigation';
+    subPages['hdt-gyro2'] = 'navigation';
+    
+    subPages['met'] = 'weather';
+    subPages['twind-bow'] = 'weather';
+    subPages['twind-stbd'] = 'weather';
+    subPages['twind-port'] = 'weather';
+    
+    subPages['tsg-sbe45'] = 'soundVelocity';
+    
+    function displayLatestJSON(dataType) {
+        var getVisualizerDataURL = siteRoot + 'api/getLatestVisualizerDataByType/' + cruiseID + '/' + dataType;
+        $.getJSON(getVisualizerDataURL, function (data, status) {
+            if (status === 'success' && data !== null) {
+                
+                var placeholder = '#' + dataType + '-placeholder';
+                if (data.indexOf('error') > 0) {
+                    $(placeholder).html('<strong>Error: ' + data.error + '</strong>');
+                } else {
+                    var seriesData = [],
+                        yAxes = [],
+                        xAxes = [],
+                        i = 0;
+                    
+                    for (i = 0; i < data.length; i++) {
+                        yAxes[i] = {
+                            labels: {
+                                enabled: false
+                            },
+                            title: {
+                                enabled: false
+                            }
+                        };
+                    
+                        //if (data[i].label === "Humidity (%)") {
+                        //    yAxes[i].min = 0;
+                        //    yAxes[i].max = 100;
+                        //}
+                    
+                        seriesData[i] = {
+                            name: data[i].label,
+                            yAxis: i,
+                            data: data[i].data,
+                            animation: false
+                        };
+                    }
+                
+                    var chartOptions = {
+                        chart: {
+                            type: 'line',
+                            events: {
+                                click: function (e) {
+                                    window.location.href = siteRoot + subPages[dataType];
+                                }
+                            }
+                        },
+                        plotOptions: {
+                            series: {
+                                events: {
+                                    legendItemClick: function () {
+                                        return false;
+                                    }
+                                },
+                                states: {
+                                    hover: {
+                                        enabled: false
+                                    }
+                                }
+                            }
+                        },
+                        title: {text: ''},
+                        tooltip: false,
+                        legend: {
+                            enabled: true
+                        },
+                        xAxis: {
+                            type: 'datetime',
+                            title: {text: ''},
+                            dateTimeLabelFormats: {millisecond: '%H', second: '%H:%M:%S', minute: '%H:%M', hour: '%H:%M', day: '%e. %b', week: '%e. %b', month: '%b \'%y', year: '%Y'}
+                        },
+                        yAxis: yAxes,
+                        series: seriesData
+                    };
+                    $(placeholder).highcharts(chartOptions);
+                }
+            }
+        });
+    }
+    
+        
+    function displayLatestGeoJSON(dataType) {
+        var getVisualizerDataURL = siteRoot + 'api/getLatestVisualizerDataByType/' + cruiseID + '/' + dataType;
+        $.getJSON(getVisualizerDataURL, function (data, status) {
+            if (status === 'success' && data !== null) {
+
+                var placeholder = '#' + dataType + '-placeholder';
+                if ('error' in data) {
+                    $(placeholder).html('<strong>Error: ' + data.error + '</strong>');
+                } else {
+                    //Get the last coordinate from the latest trackline
+                    var lastCoordinate = data[0].features[0].geometry.coordinates[data[0].features[0].geometry.coordinates.length - 1],
+                        latLng = L.latLng(lastCoordinate[1], lastCoordinate[0]);
+                    
+                    // Add latest trackline (GeoJSON)
+                    var ggaData = L.geoJson(data[0]),
+                        mapBounds = ggaData.getBounds();
+                    
+                    mapBounds.extend(latLng);
+
+                    //Build the map
+                    var mapdb = L.map(placeholder.split('#')[1], {
+                        maxZoom: 13,
+                        zoomControl: false,
+                        dragging: false,
+                        doubleClickZoom: false,
+                        touchZoom: false,
+                        scrollWheelZoom: false
+                    }).fitBounds(mapBounds).zoomOut(1);
+                    
+                    mapdb.on('click', function(e) {
+                        window.location.href = siteRoot + subPages[dataType];
+                    });
+
+                    //Add basemap layer, use ESRI Oceans Base Layer
+                    L.esri.basemapLayer("Oceans").addTo(mapdb);
+
+                    // Add latest trackline (GeoJSON)
+                    L.geoJson(data[0]).addTo(mapdb);
+                    
+                    // Add marker at the last coordinate
+                    var marker = L.marker(latLng).addTo(mapdb);
+                    
+                }
+            }
+        });
+    }
+    
+    function displayLatestTMS(dataType) {
+        var getVisualizerDataURL = siteRoot + 'api/getLatestVisualizerDataByType/' + cruiseID + '/' + dataType;
+        $.getJSON(getVisualizerDataURL, function (data, status) {
+            if (status === 'success' && data !== null) {
+                
+                var placeholder = '#' + dataType + '-placeholder';
+                if ('error' in data) {
+                    $(placeholder).html('<strong>Error: ' + data.error + '</strong>');
+                } else {
+                    
+                    var coords = data[0]['mapBounds'].split(','),
+                            southwest = L.latLng(parseFloat(coords[1]), parseFloat(coords[0])),
+                            northeast = L.latLng(parseFloat(coords[3]), parseFloat(coords[2]));
+                        
+                    //Build Leaflet latLng object
+                    var mapBounds = L.latLngBounds(southwest, northeast);
+                    var latLng = mapBounds.getCenter();
+
+                    //Build the map
+                    var mapdb = L.map(placeholder.split('#')[1], {
+                        maxZoom: 9,
+                        zoomControl: false,
+                        dragging: false,
+                        doubleClickZoom: false,
+                        touchZoom: false,
+                        scrollWheelZoom: false
+                    });
+                    
+                    mapdb.on('click', function(e) {
+                        window.location.href = siteRoot + subPages[dataType];
+                    });
+
+                    //Add basemap layer, use ESRI Oceans Base Layer
+                    L.esri.basemapLayer("Oceans").addTo(mapdb);
+
+                    // Add latest trackline (GeoJSON)
+                    L.tileLayer(location.protocol + '//' + location.host + cruiseDataDir + '/' + data[0]['tileDirectory'] + '/{z}/{x}/{y}.png', {
+                        tms: true,
+                        bounds:mapBounds
+                    }).addTo(mapdb);
+                    mapdb.fitBounds(mapBounds);
+                }
+            }
+        });
+    }
+
+    function displayLatestData() {
+        
+        var i = 0;
+        for (i = 0; i < geoJSONTypes.length; i++) {
+            if ($('#' + geoJSONTypes[i] + '-placeholder').length) {
+                displayLatestGeoJSON(geoJSONTypes[i]);
+            }
+        }
+
+        for (i = 0; i < tmsTypes.length; i++) {
+            if ($('#' + tmsTypes[i] + '-placeholder').length) {
+                displayLatestTMS(tmsTypes[i]);
+            }
+        }
+
+        for (i = 0; i < jsonTypes.length; i++) {
+            if ($('#' + jsonTypes[i] + '-placeholder').length) {
+                displayLatestJSON(jsonTypes[i]);
+            }
+        }
+    }
+    
+    displayLatestData();
+});
+    
