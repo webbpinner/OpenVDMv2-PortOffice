@@ -37,7 +37,7 @@ Use the OpenVDMv2-PortOffice_MySQLSchema.sql file to import the required tables 
 Copy the OpenVDMv2-PortOffice directory into the web-server document root.  On Xubuntu systems this is located at `/var/www/html/`.  Change the owner/group settings to match those used by Apache for that particular machine.  Also set the file permissions for `./OpenVDMv2-PortOffice/errorlog.html` to `777`.
 
 #### Modify web-application configuration
-You will need to modify the configuration of the web-application to match the system's configuration.  To do so edit the `./app/Core/Config.php file`.  Modify the values for the `site address`,`DB_NAME`, `DB_USER` and `DB_PASS` to match the current system.  The included Config.php has the site address as `127.0.0.1`.  This will need to be changed to the IP or hostname external users will use to access Port Office.
+You will need to modify the configuration of the web-application to match the system's configuration.  To do so edit the `./app/Core/Config.php` file.  Modify the values for the `site address`,`DB_NAME`, `DB_USER` and `DB_PASS` to match the current system.  The included Config.php has the site address as `127.0.0.1`.  This will need to be changed to the IP or hostname external users will use to access Port Office.
 
 #### Modify the Apache configuration
 OpenVDMv2 - Port Office uses the Apache rewrite module.  To enable mod_rewrite type: `a2enmod rewrite`.  If the module is not installed you will first need to run (on Xubuntu systems): `apt-get install libapache2-mod-rewrite`.
