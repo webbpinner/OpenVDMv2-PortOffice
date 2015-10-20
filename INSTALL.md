@@ -1,3 +1,6 @@
+[OpenVDMv2_Logo]: http://www.oceandatarat.org/wp-content/uploads/2014/11/openVDM_LogoV2_1_long.png "Open Vessel Data Managment v2" 
+
+![OpenVDMv2_Logo]
 # OpenVDMv2-PortOffice v0.1
 The Shore-side component of OpenVDMv2
 
