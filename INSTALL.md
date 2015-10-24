@@ -16,10 +16,10 @@ Perform the default Xubuntu install. For these instructions the default account 
 
 A few minutes after the install completes and the computer restarts, Xubuntu will ask to install any updates that have arrived since the install image was created. Perform these now and do not continue with these instructions until the update has completed.
 
-Before OpenVDMv2 can be installed serveral other services and software packaged must be installed and configured.
+Before OpenVDMv2 - Port Office can be installed serveral other services and software packaged must be installed and configured.
 
 ###MySQL Database Server
-All of the commonly used variables, tranfer profiles, and user creditials for OpenVDM are stored in a SQL database. This allows fast access to the stored information as well as a proven mechanism for multiple clients to change records without worry of write collisions. OpenVDM uses the MySQL open-source database server.
+All of the commonly used variables, tranfer profiles, and user creditials for OpenVDM - Port Office are stored in a SQL database. This allows fast access to the stored information as well as a proven mechanism for multiple clients to change records without worry of write collisions. OpenVDM - Port Office uses the MySQL open-source database server.
 
 To install MySQL open a terminal window and type:
 ```
@@ -36,7 +36,7 @@ sudo apt-get install php5 php5-cli php5-mysql
 
 ###Apache2 Web-server
 
-The OpenVDM web-application is served by the Warehouse via the Apache2 Web-Server
+The OpenVDM - Port Office web-application is served by the Warehouse via the Apache2 Web-Server
 
 Apache2 is installed by Xubuntu by default but an Apache2 module must be enabled. To enable the additional module open a terminal window and type:
 
@@ -53,9 +53,9 @@ sudo service apache2 restart
 ###OpenVDMv2 - Port Office
 Create the Required Directories
 
-In order for OpenVDMv2 to properly store data serveral directories must be created on the PortOffice machine.
+In order for OpenVDMv2 - Port Office to properly store data serveral directories must be created on the PortOffice machine.
 
-- **CruiseData** - This is the location where the Cruise Data directories will be located.
+- **CruiseData** - This is the location where the incoming Cruise Data directories will be located.
 
 The Location of the **CruiseData** needs to be large enough to hold multiple cruises worth of data. In typical installation of OpenVDMv2 - Port Office, the location of the **CruiseData** is on dedicated hardware (internal RAID array). In these cases the volume is mounted at boot by the OS to a specific location (i.e. `/mnt/vault`). Instructions on mounting volumes at boot is beyond the scope of these installation procedures however.
 
@@ -190,3 +190,37 @@ Reload Apache2
 ```
 sudo service apache2 reload
 ```
+
+At this point OpenVDMv2 should be installed and awaiting incoming data.
+Goto to the URL for OpenVDMv2 - Port Office as defined earlier.
+The default username/password are: admin/demo.
+
+It is recommended to change the password as soon as possible.
+
+###Connecting OpenVDMv2 running on a vessel to OpenVDMv2 - Port Office
+
+For security reasons the connection between OpenVDMv2 and OpenVDMv2 - Port Office must be initiated from the vessel.  The remainder of the instructions within this section are meant to be executed within the OpenVDMv2 installation on the vessel.
+
+####Configure the Shoreside Data Warehouse
+From the OpenVDMv2 web-application goto the "System" tab in the "Configuration" section.
+
+Click the "Edit" link next to Shoreside Data Warehouse (SSDW)
+
+Complete the "Edit Shoreside Data Warehouse" form using the appropriate information from this installation.
+
+When complete click the "Update" button to save the changes.
+
+To verify the configuration is correct click the "Test" link next to "Shoreside Data Warehouse (SSDW)".
+
+####Enable the Required Ship-to-Shore Transfer profiles
+From the OpenVDMv2 web-application goto the "System" tab in the "Configuration" section.
+
+Within the **OpenVDM Specific Ship-to-Shore Transfers** panel, make sure the "Dashboard Data" AND "OpenVDM Configuration" transfers are enabled.
+
+####Manually Initiating a Ship-to-Shore Transfer
+To manually initiate a ship-to-shore transfer goto the "Ship-to-Shore Transfers" tab in the "Configuration" section.
+
+Click the "Run Ship-to-Shore Transfer"
+
+####Automatic Ship-to-Shore Transfers
+While OpenVDMv2 System Status is "On" AND Ship-to-Shore Tranfers are enabled, OpenVDMv2 will automatically attempt to push new data to shore every 5 minutes.
