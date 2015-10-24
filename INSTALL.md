@@ -99,7 +99,7 @@ It is not important what the name and passwork are for this new user however it 
 To build the database schema and perform the initial import type:
 
 ```
-USE OpenVDMv2;
+USE OpenVDMv2-PO;
 source ~/OpenVDMv2-PortOffice/OpenVDMv2-PO_db.sql;
 ```
 
@@ -109,14 +109,16 @@ Exit the MySQL console:
 exit
 ```
 
-##Install OpenVDMv2 Web-Application
+##Install OpenVDMv2 - Port Office Web-Application
 
 Copy the web-application code to a directory that can be accessed by Apache
 
 ```
-sudo cp -r ~/OpenVDMv2/var/www/OpenVDMv2 /var/www/
-sudo chown -R root:root /var/www/OpenVDMv2
+sudo cp -r ~/OpenVDMv2-PortOffice/var/www/OpenVDMv2-PortOffice /var/www/
+sudo chown -R root:root /var/www/OpenVDMv2-PortOffice
+sudo chmod 777 /var/www/OpenVDMv2-PortOffice/errorlog.html
 ```
+
 Create the two required configuration files from the example files provided.
 
 ```
@@ -167,7 +169,7 @@ Edit the default Apache2 VHost file.
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
-Copy text below into the Apache2 configuration file just above </VirtualHost>. You will need to alter the directory locations to match the locations selected for the CruiseData, PublicData and VisitorInformation directories:
+Copy text below into the Apache2 configuration file just above </VirtualHost>. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
 
 ```
   Alias /OpenVDMv2 /var/www/OpenVDMv2-PortOffice
@@ -176,7 +178,7 @@ Copy text below into the Apache2 configuration file just above </VirtualHost>. Y
   </Directory>
 
   Alias /CruiseData/ /mnt/vault/CruiseData/
-  <Directory "/mnt/vault/FTPRoot/CruiseData">
+  <Directory "/mnt/vault/CruiseData">
     AllowOverride None
     Options -Indexes +FollowSymLinks +MultiViews
     Order allow,deny
@@ -191,7 +193,7 @@ Reload Apache2
 sudo service apache2 reload
 ```
 
-At this point OpenVDMv2 should be installed and awaiting incoming data.
+At this point OpenVDMv2 - Port Office should be installed and awaiting incoming data.
 Goto to the URL for OpenVDMv2 - Port Office as defined earlier.
 The default username/password are: admin/demo.
 
