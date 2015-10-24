@@ -55,7 +55,7 @@ Create the Required Directories
 
 In order for OpenVDMv2 to properly store data serveral directories must be created on the PortOffice machine.
 
--**CruiseData** - This is the location where the Cruise Data directories will be located.
+- **CruiseData** - This is the location where the Cruise Data directories will be located.
 
 The Location of the **CruiseData** needs to be large enough to hold multiple cruises worth of data. In typical installation of OpenVDMv2 - Port Office, the location of the **CruiseData** is on dedicated hardware (internal RAID array). In these cases the volume is mounted at boot by the OS to a specific location (i.e. `/mnt/vault`). Instructions on mounting volumes at boot is beyond the scope of these installation procedures however.
 
