@@ -135,7 +135,7 @@ Edit the .htaccess file:
 sudo nano /var/www/OpenVDMv2-PortOffice/.htaccess
 ```
 
-Set the RewriteBase to part of the URL after the hostname that will become the landing page for OpenVDMv2 - Port Office. By default this is set to OpenVDMv2 - Port Office meaning that once active users will go to `http://<IP or Hostname>OpenVDMv2-PortOffice/`.
+Set the RewriteBase to part of the URL after the hostname that will become the landing page for OpenVDMv2 - Port Office. By default this is set to OpenVDMv2 - Port Office meaning that once active users will go to `http://<IP or Hostname>/OpenVDMv2-PortOffice/`.
 
 Edit the ./app/Core/Config.php file:
 
