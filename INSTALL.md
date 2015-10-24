@@ -55,11 +55,11 @@ Create the Required Directories
 
 In order for OpenVDMv2 to properly store data serveral directories must be created on the PortOffice machine.
 
-- #CruiseData# - This is the location where the Cruise Data directories will be located.
+-**CruiseData** - This is the location where the Cruise Data directories will be located.
 
-The Location of the #CruiseData# needs to be large enough to hold multiple cruises worth of data. In typical installation of OpenVDMv2 - Port Office, the location of the FTPRoot is on dedicated hardware (internal RAID array). In these cases the volume is mounted at boot by the OS to a specific location (i.e. `/mnt/vault`). Instructions on mounting volumes at boot is beyond the scope of these installation procedures however.
+The Location of the **CruiseData** needs to be large enough to hold multiple cruises worth of data. In typical installation of OpenVDMv2 - Port Office, the location of the **CruiseData** is on dedicated hardware (internal RAID array). In these cases the volume is mounted at boot by the OS to a specific location (i.e. `/mnt/vault`). Instructions on mounting volumes at boot is beyond the scope of these installation procedures however.
 
-For the purposes of these installation instructions the parent folder for #CruiseData# will be a large RAID array located at: /mnt/vault and the user that will retain ownership of these folders will be "survey"
+For the purposes of these installation instructions the parent folder for **CruiseData** will be a large RAID array located at: /mnt/vault and the user that will retain ownership of these folders will be "survey"
 
 ```
 sudo mkdir -p /mnt/vault/CruiseData
@@ -148,7 +148,7 @@ Set the file URL of the OpenVDMv2 - Port Office installation. Look for the follo
 define('DIR', 'http://127.0.0.1/OpenVDMv2-PortOffice/');
 ```
 
-#A word of caution.# The framework used by OpenVDMv2 - Port Office does not allow more than one URL to access the web-application. This means that you can NOT access the web-application using the machine hostname AND IP. You must pick one. Also with dual-homed machines you CAN NOT access the web-application by entering the IP address of the interface not used in this configuration file. Typically this is not a problem since dual-homed installation are dual-homed because the Warehouse is spanning a public and private subnet. While users on the the public subnet can't access machines on the private network, users on the private network can access machines on the public network. In that scenario the URL should be set to the Warehouse's interface on the public network, thus allowing users on both subnets access.
+**A word of caution.** The framework used by OpenVDMv2 - Port Office does not allow more than one URL to access the web-application. This means that you can NOT access the web-application using the machine hostname AND IP. You must pick one. Also with dual-homed machines you CAN NOT access the web-application by entering the IP address of the interface not used in this configuration file. Typically this is not a problem since dual-homed installation are dual-homed because the Warehouse is spanning a public and private subnet. While users on the the public subnet can't access machines on the private network, users on the private network can access machines on the public network. In that scenario the URL should be set to the Warehouse's interface on the public network, thus allowing users on both subnets access.
 
 Set the access creditials for the MySQL database. Look for the following lines and modify them to fit the actual database name (`DB_NAME`), database username (`DB_USER`), and database user password (`DB_PASS`).
 
