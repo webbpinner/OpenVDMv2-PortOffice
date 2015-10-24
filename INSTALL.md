@@ -1,12 +1,11 @@
 [OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment v2 - Port Office" 
 
 ![OpenVDMv2PO_Logo]
-# OpenVDMv2-PortOffice v0.1
-The Shore-side component of OpenVDMv2
+# OpenVDMv2 - PortOffice v0.1
 
 ## Install Guide
 
-At the time of this writing OpenVDMv2 was built and tested against the Xubuntu 14.04 LTS operating system.  It may be possible to build against other operating systems however for the purposes of this guide the instructions will assume Xubuntu is used.
+At the time of this writing OpenVDMv2 - Port Office was built and tested against the Xubuntu 14.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Xubuntu 14.04 LTS is used.
 
 ###Operating System
 Goto <http://xubuntu.org/getxubuntu/>
