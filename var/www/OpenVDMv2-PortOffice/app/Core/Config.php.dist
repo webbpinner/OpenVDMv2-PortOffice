@@ -36,13 +36,13 @@ class Config
         //database details ONLY NEEDED IF USING A DATABASE
         define('DB_TYPE', 'mysql');
         define('DB_HOST', 'localhost');
-        define('DB_NAME', 'OpenVDMv2-PortOffice');
-        define('DB_USER', 'root');
-        define('DB_PASS', 'openVDM-PO!');
+        define('DB_NAME', 'OpenVDMv2-PO');
+        define('DB_USER', 'openvdmDBUser');
+        define('DB_PASS', 'oxhzbeY8WzgBL3');
         define('PREFIX', 'ovdmpo_');
 
         //set prefix for sessions
-        define('SESSION_PREFIX', 'ovdm-po_');
+        define('SESSION_PREFIX', 'ovdmpo_');
 
         //optionall create a constant for the name of the site
         define('SITETITLE', 'OpenVDMv2 - Port Office v0.1');
