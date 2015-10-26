@@ -17,4 +17,5 @@ For more information on OpenVDMv2 Port Office please checkout <http://oceandatar
 - Password: ***demo***
 
 ##Installation
-Please checkout the INSTALL.md file located in this repository.
+
+For installation instruction please read the INSTALL.md file located in this repository.
