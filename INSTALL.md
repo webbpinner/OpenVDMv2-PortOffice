@@ -62,8 +62,8 @@ The Location of the **CruiseData** needs to be large enough to hold multiple cru
 For the purposes of these installation instructions the parent folder for **CruiseData** will be a large RAID array located at: /mnt/vault and the user that will retain ownership of these folders will be "survey"
 
 ```
-sudo mkdir -p /mnt/vault/CruiseData
-sudo chown -R survey:survey /mnt/vault/CruiseData
+sudo mkdir -p /mnt/vault/ShoresideCruiseData
+sudo chown -R survey:survey /mnt/vault/ShoresideCruiseData
 ```
 
 ###Download the OpenVDM Files from Github
@@ -86,20 +86,20 @@ mysql -h localhost -u root -p
 Once connected to MySQL, create the database by typing:
 
 ```
-CREATE DATABASE OpenVDMv2-PO;
+CREATE DATABASE OpenVDMv2_PO;
 ```
 
 Now create a new MySQL user specifically for interacting with only the OpenVDM database. In the example provided below the name of the user is openvdmDBUser and the password for that new user is oxhzbeY8WzgBL3.
 
 ```
-GRANT ALL PRIVILEGES ON OpenVDMv2-PO.* To openvdmDBUser@localhost IDENTIFIED BY 'oxhzbeY8WzgBL3';
+GRANT ALL PRIVILEGES ON OpenVDMv2_PO.* To openvdmDBUser@localhost IDENTIFIED BY 'oxhzbeY8WzgBL3';
 ```
 It is not important what the name and passwork are for this new user however it is important to remember the designated username/password as it will be reference later in the installation.
 
 To build the database schema and perform the initial import type:
 
 ```
-USE OpenVDMv2-PO;
+USE OpenVDMv2_PO;
 source ~/OpenVDMv2-PortOffice/OpenVDMv2-PO_db.sql;
 ```
 
@@ -140,7 +140,7 @@ Set the RewriteBase to part of the URL after the hostname that will become the l
 Edit the ./app/Core/Config.php file:
 
 ```
-sudo nano /var/www/OpenVDMv2/app/Core/Config.php
+sudo nano /var/www/OpenVDMv2-PortOffice/app/Core/Config.php
 ```
 
 Set the file URL of the OpenVDMv2 - Port Office installation. Look for the following lines and change the IP address in the URL to the actual IP address or hostname of the warehouse:
@@ -158,7 +158,7 @@ Set the access creditials for the MySQL database. Look for the following lines a
 //database details ONLY NEEDED IF USING A DATABASE
 define('DB_TYPE', 'mysql');
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'OpenVDMv2-PO');
+define('DB_NAME', 'OpenVDMv2_PO');
 define('DB_USER', 'openvdmDBUser');
 define('DB_PASS', 'oxhzbeY8WzgBL3');
 define('PREFIX', 'OVDM-PO_');
@@ -172,13 +172,13 @@ sudo nano /etc/apache2/sites-available/000-default.conf
 Copy text below into the Apache2 configuration file just above </VirtualHost>. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
 
 ```
-  Alias /OpenVDMv2 /var/www/OpenVDMv2-PortOffice
+  Alias /OpenVDMv2-PortOffice /var/www/OpenVDMv2-PortOffice
   <Directory "/var/www/OpenVDMv2-PortOffice">
     AllowOverride all
   </Directory>
 
-  Alias /CruiseData/ /mnt/vault/CruiseData/
-  <Directory "/mnt/vault/CruiseData">
+  Alias /ShoresideCruiseData/ /mnt/vault/ShoresideCruiseData/
+  <Directory "/mnt/vault/ShoresideCruiseData">
     AllowOverride None
     Options -Indexes +FollowSymLinks +MultiViews
     Order allow,deny
