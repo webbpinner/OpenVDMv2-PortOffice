@@ -37,8 +37,8 @@ LOCK TABLES `ovdmpo_CoreVars` WRITE;
 
 INSERT INTO `ovdmpo_CoreVars` (`coreVarID`, `name`, `value`)
 VALUES
-	(1,'shoresideDWBaseDir','/mnt/vault/CruiseData'),
-	(2,'shoresideDWApacheDir','/CruiseData');
+	(1,'shoresideDWBaseDir','/mnt/vault/ShoresideCruiseData'),
+	(2,'shoresideDWApacheDir','/ShoresideCruiseData');
 
 /*!40000 ALTER TABLE `ovdmpo_CoreVars` ENABLE KEYS */;
 UNLOCK TABLES;
