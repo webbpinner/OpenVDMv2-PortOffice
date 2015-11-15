@@ -95,9 +95,8 @@ $hooks->run('afterBody');
     if(sizeof($data['cruiseList']) > 0) {
 ?>
                             <select name="cruiseID" onchange="this.form.submit()" class="form-control">
-                                <option value="<?php echo $data['cruiseList'][0]; ?>"<?php echo ' ' . (Session::get('cruiseID') == $data['cruiseList'][0] ? 'selected':'');?>>Current Cruise</option>
 <?php
-        for($i=1;$i<sizeof($data['cruiseList']); $i++){
+        for($i=0;$i<sizeof($data['cruiseList']); $i++){
 ?>
                                 <option value="<?php echo $data['cruiseList'][$i]; ?>"<?php echo ' ' . (Session::get('cruiseID') == $data['cruiseList'][$i] ? 'selected':'');?>><?php echo $data['cruiseList'][$i]; ?></option>
 <?php

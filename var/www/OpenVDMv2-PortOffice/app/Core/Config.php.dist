@@ -36,7 +36,7 @@ class Config
         //database details ONLY NEEDED IF USING A DATABASE
         define('DB_TYPE', 'mysql');
         define('DB_HOST', 'localhost');
-        define('DB_NAME', 'OpenVDMv2-PO');
+        define('DB_NAME', 'OpenVDMv2_PO');
         define('DB_USER', 'openvdmDBUser');
         define('DB_PASS', 'oxhzbeY8WzgBL3');
         define('PREFIX', 'ovdmpo_');

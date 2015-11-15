@@ -17,14 +17,6 @@ class Placeholder
     public $dataFiles;
 }
 
-/*
- * Welcome controller
- *
- * @author David Carr - dave@simplemvcframework.com
- * @version 2.2
- * @date June 27, 2014
- * @date updated May 18 2015
- */
 class PortOffice extends Controller
 {
 
@@ -59,12 +51,11 @@ class PortOffice extends Controller
      */
     public function dashboard()
     {
-
         $data['title'] = 'Dashboard';
         $data['page'] = 'dashboard';
         $data['shoresideDWApacheDir'] = $this->_systemModel->getShoresideDWApacheDir();
         $data['css'] = array('leaflet');
-        $data['javascript'] = array('dashboard','highcharts','leaflet');
+        $data['javascript'] = array('dataDashboard','highcharts','leaflet');
 
         $data['dataTypes'] = $this->_dashboardDataModel->getDashboardDataTypes();
         //var_dump($data['dataTypes']);
@@ -85,57 +76,19 @@ class PortOffice extends Controller
         $data['page'] = 'navigation';
         $data['shoresideDWApacheDir'] = $this->_systemModel->getShoresideDWApacheDir();
         $data['css'] = array('leaflet');
-        $data['javascript'] = array('defaultData','leaflet','highcharts');
+        $data['javascript'] = array('dataTabs','leaflet','highcharts');
         
         $position = new Placeholder();
         $position->plotType = 'map';
         $position->id = 'map';
         $position->heading = 'Position';
-        $position->dataTypes = array('geoJSON', 'geoJSON', 'geoJSON', 'geoJSON');
+        $position->dataTypes = array('geoJSON', 'tms');
         $position->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gga-furuno'),
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gga-garmin741'),
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gga-nstarwaas'),
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gga-spectracom'),
+            $this->_dashboardDataModel->getDashboardObjectsByTypes('gga'),
+            $this->_dashboardDataModel->getDashboardObjectsByTypes('geotiff')
         );
         
-        $hdt_gyro1 = new Placeholder();
-        $hdt_gyro1->plotType = 'chart';
-        $hdt_gyro1->id = 'hdt-gyro1';
-        $hdt_gyro1->heading = 'Heading - Gyro 1';
-        $hdt_gyro1->dataTypes = array('json');
-        $hdt_gyro1->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('hdt-gyro1')
-        );
-        
-        $hdt_gyro2 = new Placeholder();
-        $hdt_gyro2->plotType = 'chart';
-        $hdt_gyro2->id = 'hdt-gyro2';
-        $hdt_gyro2->heading = 'Heading - Gyro 2';
-        $hdt_gyro2->dataTypes = array('json');
-        $hdt_gyro2->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('hdt-gyro2')
-        );
-        
-        $gnss_adu2 = new Placeholder();
-        $gnss_adu2->plotType = 'chart';
-        $gnss_adu2->id = 'gnss-adu2';
-        $gnss_adu2->heading = 'Attitude - ADU2';
-        $gnss_adu2->dataTypes = array('json');
-        $gnss_adu2->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gnss-adu2')
-        );
-        
-        $gnss_adu5 = new Placeholder();
-        $gnss_adu5->plotType = 'chart';
-        $gnss_adu5->id = 'gnss-adu5';
-        $gnss_adu5->heading = 'Attitude - ADU5';
-        $gnss_adu5->dataTypes = array('json');
-        $gnss_adu5->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('gnss-adu5')
-        );
-
-        $data['placeholders'] = array($position, $hdt_gyro1, $hdt_gyro2, $gnss_adu2, $gnss_adu5);
+        $data['placeholders'] = array($position);
         
         $noDataFiles = true;
         for($i = 0; $i < sizeof($data['placeholders']); $i++) {
@@ -166,7 +119,7 @@ class PortOffice extends Controller
         $data['title'] = 'Weather';
         $data['page'] = 'weather';
         $data['shoresideDWApacheDir'] = $this->_systemModel->getShoresideDWApacheDir();
-        $data['javascript'] = array('defaultData', 'highcharts');
+        $data['javascript'] = array('dataTabs', 'highcharts');
         
         $met = new Placeholder();
         $met->plotType = 'chart';
@@ -177,34 +130,16 @@ class PortOffice extends Controller
             $this->_dashboardDataModel->getDashboardObjectsByTypes('met')
         );
         
-        $twind_bow = new Placeholder();
-        $twind_bow->plotType = 'chart';
-        $twind_bow->id = 'twind-bow';
-        $twind_bow->heading = 'Wind Sensor - Bow';
-        $twind_bow->dataTypes = array('json');
-        $twind_bow->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('twind-bow')
+        $twind = new Placeholder();
+        $twind->plotType = 'chart';
+        $twind->id = 'twind';
+        $twind->heading = 'Wind Sensor';
+        $twind->dataTypes = array('json');
+        $twind->dataFiles = array(
+            $this->_dashboardDataModel->getDashboardObjectsByTypes('twind')
         );
-        
-        $twind_stbd = new Placeholder();
-        $twind_stbd->plotType = 'chart';
-        $twind_stbd->id = 'twind-stbd';
-        $twind_stbd->heading = 'Wind Sensor - Starboard';
-        $twind_stbd->dataTypes = array('json');
-        $twind_stbd->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('twind-stbd')
-        );
-        
-        $twind_port = new Placeholder();
-        $twind_port->plotType = 'chart';
-        $twind_port->id = 'twind-port';
-        $twind_port->heading = 'Wind Sensor - Port';
-        $twind_port->dataTypes = array('json');
-        $twind_port->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('twind-port')
-        );
-        
-        $data['placeholders'] = array($met, $twind_bow, $twind_stbd, $twind_port);
+                
+        $data['placeholders'] = array($met, $twind);
         
         $noDataFiles = true;
         for($i = 0; $i < sizeof($data['placeholders']); $i++) {
@@ -235,18 +170,28 @@ class PortOffice extends Controller
         $data['title'] = 'Sound Velocity';
         $data['page'] = 'soundVelocity';
         $data['shoresideDWApacheDir'] = $this->_systemModel->getShoresideDWApacheDir();
-        $data['javascript'] = array('defaultData', 'highcharts');
+        $data['javascript'] = array('dataTabs', 'highcharts');
         
-        $tsg_sbe45 = new Placeholder();
-        $tsg_sbe45->plotType = 'chart';
-        $tsg_sbe45->id = 'tsg-sbe45';
-        $tsg_sbe45->heading = 'Thermosalinograph Sensor';
-        $tsg_sbe45->dataTypes = array('json');
-        $tsg_sbe45->dataFiles = array(
-            $this->_dashboardDataModel->getDashboardObjectsByTypes('tsg-sbe45')
+        $tsg = new Placeholder();
+        $tsg->plotType = 'chart';
+        $tsg->id = 'tsg';
+        $tsg->heading = 'Thermosalinograph Sensor';
+        $tsg->dataTypes = array('json');
+        $tsg->dataFiles = array(
+            $this->_dashboardDataModel->getDashboardObjectsByTypes('tsg')
         );
+
+        $svp = new Placeholder();
+        $svp->plotType = 'chart';
+        $svp->id = 'svp';
+        $svp->heading = 'Sound Velocity Probe';
+        $svp->dataTypes = array('json');
+        $svp->dataFiles = array(
+            $this->_dashboardDataModel->getDashboardObjectsByTypes('svp')
+        );
+
         
-        $data['placeholders'] = array($tsg_sbe45);
+        $data['placeholders'] = array($tsg, $svp);
         
         $noDataFiles = true;
         for($i = 0; $i < sizeof($data['placeholders']); $i++) {
