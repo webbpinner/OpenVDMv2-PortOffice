@@ -59,7 +59,7 @@ In order for OpenVDMv2 - Port Office to properly store data serveral directories
 
 The Location of the **CruiseData** needs to be large enough to hold multiple cruises worth of data. In typical installation of OpenVDMv2 - Port Office, the location of the **CruiseData** is on dedicated hardware (internal RAID array). In these cases the volume is mounted at boot by the OS to a specific location (i.e. `/mnt/vault`). Instructions on mounting volumes at boot is beyond the scope of these installation procedures.
 
-For the purposes of these installation instructions the name of the **CruiseData** folder will be '''Shoreside''', it will be located at '''/mnt/vault''' and the user that will retain ownership of this folders will be "survey"
+For the purposes of these installation instructions the name of the **CruiseData** folder will be `Shoreside`, it will be located at `/mnt/vault` and the user that will retain ownership of this folders will be "survey"
 
 ```
 sudo mkdir -p /mnt/vault/Shoreside
