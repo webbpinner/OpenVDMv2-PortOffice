@@ -1,7 +1,7 @@
-[OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment v2 - Port Office" 
+[OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment - Port Office v2.1" 
 
 ![OpenVDMv2PO_Logo]
-# OpenVDMv2 - PortOffice v0.1
+# OpenVDM - PortOffice v2.1
 
 ## Install Guide
 
