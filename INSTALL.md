@@ -89,7 +89,7 @@ Once connected to MySQL, create the database by typing:
 CREATE DATABASE OpenVDMv2_PO;
 ```
 
-Now create a new MySQL user specifically for interacting with only the OpenVDM database. In the example provided below the name of the user is openvdmDBUser and the password for that new user is oxhzbeY8WzgBL3.
+Now create a new MySQL user specifically for interacting with only the OpenVDM database. In the example provided below the name of the user is 'openvdmDBUser' and the password for that new user is 'oxhzbeY8WzgBL3'.
 
 ```
 GRANT ALL PRIVILEGES ON OpenVDMv2_PO.* To openvdmDBUser@localhost IDENTIFIED BY 'oxhzbeY8WzgBL3';
