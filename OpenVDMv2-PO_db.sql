@@ -30,18 +30,7 @@ CREATE TABLE `ovdmpo_CoreVars` (
   `name` tinytext NOT NULL,
   `value` tinytext,
   PRIMARY KEY (`coreVarID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-LOCK TABLES `ovdmpo_CoreVars` WRITE;
-/*!40000 ALTER TABLE `ovdmpo_CoreVars` DISABLE KEYS */;
-
-INSERT INTO `ovdmpo_CoreVars` (`coreVarID`, `name`, `value`)
-VALUES
-	(1,'shoresideDWBaseDir','/mnt/vault/ShoresideCruiseData'),
-	(2,'shoresideDWApacheDir','/ShoresideCruiseData');
-
-/*!40000 ALTER TABLE `ovdmpo_CoreVars` ENABLE KEYS */;
-UNLOCK TABLES;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
 # Dump of table ovdmpo_Users
@@ -63,7 +52,7 @@ LOCK TABLES `ovdmpo_Users` WRITE;
 
 INSERT INTO `ovdmpo_Users` (`userID`, `username`, `password`, `userRole`, `lastLogin`)
 VALUES
-	(1,'admin','$2y$12$JviETOQPkNzqZxQpswLb1ONtTLxsqdzQJEoaWjlNzb0/.xfIOVM/C',1,'2015-10-07 19:16:18');
+	(1,'admin','$2y$12$JviETOQPkNzqZxQpswLb1ONtTLxsqdzQJEoaWjlNzb0/.xfIOVM/C',1,'');
 
 /*!40000 ALTER TABLE `ovdmpo_Users` ENABLE KEYS */;
 UNLOCK TABLES;
