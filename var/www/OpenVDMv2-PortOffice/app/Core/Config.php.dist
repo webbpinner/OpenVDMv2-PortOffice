@@ -86,32 +86,32 @@ class Config
         /*
          * Database name.
          */
-        define('DB_NAME', 'dbname');
+        define('DB_NAME', 'OpenVDMv2_PO');
 
         /*
          * Database username.
          */
-        define('DB_USER', 'root');
+        define('DB_USER', 'openvdmDBUser');
 
         /*
          * Database password.
          */
-        define('DB_PASS', 'password');
+        define('DB_PASS', 'oxhzbeY8WzgBL3');
 
         /*
          * PREFER to be used in database calls default is smvc_
          */
-        define('PREFIX', 'smvc_');
+        define('PREFIX', 'ovdmpo_');
 
         /*
          * Set prefix for sessions.
          */
-        define('SESSION_PREFIX', 'smvc_');
+        define('SESSION_PREFIX', 'ovdmpo_');
 
         /*
          * Optional create a constant for the name of the site.
          */
-        define('SITETITLE', 'V2.2');
+        define('SITETITLE', 'OpenVDM - Port Office v2.1');
 
         /*
          * Optional set a site email address.
@@ -127,7 +127,7 @@ class Config
         /*
          * Set timezone.
          */
-        date_default_timezone_set('Europe/London');
+        date_default_timezone_set('Atlantic/Reykjavik');
 
         /*
          * Start sessions.

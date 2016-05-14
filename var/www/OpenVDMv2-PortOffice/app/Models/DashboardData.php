@@ -52,7 +52,7 @@ class DashboardData extends Model {
                                     //If a manifest file is found, add CruiseID to output
                                     if (in_array($dataDashboardValue,array(self::MANIFEST_FN))){
                                         $manifestContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $this->_cruiseID . DIRECTORY_SEPARATOR . $ovdmConfigJSON['extraDirectoriesConfig'][$i]['destDir'] . DIRECTORY_SEPARATOR . self::MANIFEST_FN);
-					$this->_manifestObj = json_decode($manifestContents,true);
+                                        $this->_manifestObj = json_decode($manifestContents,true);
                                         break;
                                     }
                                 }

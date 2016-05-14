@@ -35,18 +35,14 @@ class DataDashboard extends Controller {
         $data['page'] = 'main';
         $data['cruiseID'] = Session::get('cruiseID');
         $data['customDataDashboardTabs'] = $this->_dataDashboardModel->getDataDashboardTabs();
-//        $data['systemStatus'] = $this->_warehouseModel->getSystemStatus();
+        //$data['systemStatus'] = $this->_warehouseModel->getSystemStatus();
         $data['dataWarehouseApacheDir'] = $this->_warehouseModel->getShoresideDataWarehouseApacheDir();
         $data['css'] = array('leaflet');
         $data['javascript'] = array('dataDashboardMain', 'dataDashboardMainCustom', 'leaflet', 'highcharts');
         $data['dataTypes'] = $this->_dashboardDataModel->getDashboardDataTypes();
-        
         $data['geoJSONTypes'] = $this->_dataDashboardModel->getGeoJSONTypes();
-        #var_dump($data['geoJSONTypes']);
         $data['tmsTypes'] = $this->_dataDashboardModel->getTMSTypes();
-        #var_dump($data['tmsTypes']);
         $data['jsonTypes'] = $this->_dataDashboardModel->getJSONTypes();
-        #var_dump($data['jsonTypes']);
         
         $data['subPages'] = $this->_dataDashboardModel->getSubPages();
 
@@ -63,7 +59,6 @@ class DataDashboard extends Controller {
     public function customTab($tabName) {
         
         $tab = $this->_dataDashboardModel->getDataDashboardTab($tabName);
-        //var_dump($tab['title']);
         $data['title'] = $tab['title'];
         $data['page'] = $tabName;
         $data['cruiseID'] = Session::get('cruiseID');
