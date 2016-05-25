@@ -24,7 +24,7 @@ foreach($data['customDataDashboardTabs'] as $row){
 <?php
 }
 ?>
-                        <li class="<?php echo ($data['page']==='vesselStatusTypes'? 'active': ''); ?>"><a id="vesselStatusTypes" href="<?php echo DIR; ?>vesselStatusTypes">Vessel Status Types</a></li>
+                        
                         <li class="<?php echo ($data['page']==='dataQuality'? 'active': ''); ?>"><a id="dataQuality" href="<?php echo DIR; ?>dataDashboard/dataQuality">Data Quality</a></li>
                         <li class="<?php echo ($data['page']==='users'? 'active': ''); ?>"><a id="dataQuality" href="<?php echo DIR; ?>users">Users</a></li>
                     </ul>
