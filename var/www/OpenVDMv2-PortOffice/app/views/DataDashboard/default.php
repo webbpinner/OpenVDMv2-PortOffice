@@ -27,20 +27,19 @@
         for($j = 0; $j < sizeof($data['placeholders'][$i]['dataArray']); $j++){
 ?>                                     
                                                 <div class="row">
-                                                    <div class="col-lg-12"><strong><?php echo $data['placeholders'][$i]['dataFiles'][$j][0]['type']; ?></strong></div>
+                                                    <div class="col-lg-12"><strong><?php echo $data['placeholders'][$i]['dataArray'][$j]['dataType']; ?></strong></div>
 <?php
             if(sizeof($data['placeholders'][$i]['dataFiles'][$j]) > 0){
                 if(strcmp($data['placeholders'][$i]['dataArray'][$j]['visType'], 'geoJSON')===0) {
 ?>
                                                     <div class='col-lg-12'>
                                                         <input class='lp-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]['dataFiles'][$j][0]['type'];?>" checked> Latest Position
-                                                    </div></br>
+                                                    </div>
 <?php
                     for($k = sizeof($data['placeholders'][$i]['dataFiles'][$j])-1; $k >= 0; $k--){
 ?>                              
                                                     <div class='col-lg-4 col-sm-6'>
                                                         <input class='<?php echo $data['placeholders'][$i]['dataArray'][$j]['visType']; ?>-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]['dataFiles'][$j][$k]['dd_json'];?>" checked> <?php echo end(explode('/',$data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']));?>
-                                                        <a href="<?php echo $data['dataWarehouseApacheDir'] . '/' . $data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']; ?>" download target="_blank"><i class="fa fa-download"></i></a>
                                                     </div>
 <?php
                     }
@@ -49,7 +48,6 @@
 ?>                              
                                                     <div class='col-lg-4 col-sm-6'>
                                                         <input class='<?php echo $data['placeholders'][$i]['dataArray'][$j]['visType']; ?>-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]['dataFiles'][$j][$k]['dd_json'];?>" checked> <?php echo end(explode('/',$data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']));?>
-                                                        <a href="<?php echo $data['dataWarehouseApacheDir'] . '/' . $data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']; ?>" download target="_blank"><i class="fa fa-download"></i></a>
                                                     </div>
 <?php
                     }
@@ -61,14 +59,13 @@
 ?>                              
                                                         <div class='col-lg-4 col-sm-6'>
                                                             <input class='<?php echo $data['placeholders'][$i]['dataArray'][$j]['visType']; ?>-radio' name="<?php echo $data['placeholders'][$i]['dataFiles'][$j][$k]['type'];?>" type="radio" value="<?php echo $data['placeholders'][$i]['dataFiles'][$j][$k]['dd_json'];?>"  <?php echo ($k === sizeof($data['placeholders'][$i]['dataFiles'][$j])-1? 'checked' : '');   ?>> <?php echo end(explode('/',$data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']));?>
-                                                            <a href="<?php echo $data['dataWarehouseApacheDir'] . '/' . $data['placeholders'][$i]['dataFiles'][$j][$k]['raw_data']; ?>" download target="_blank"><i class="fa fa-download"></i></a>
                                                         </div>
 <?php
                     }
 ?>
                                                     </div>
 <?php
-                    }
+                }
             } else {
 ?>
                                                     <div class='col-lg-12'>No data found</div>
@@ -76,6 +73,7 @@
             }
 ?>
                                                 </div>
+                                                <br>
 <?php
         }
 ?>

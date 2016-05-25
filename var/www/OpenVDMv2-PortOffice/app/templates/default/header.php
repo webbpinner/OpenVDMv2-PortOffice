@@ -44,6 +44,7 @@ $data['cruiseList'] = $warehouseModel->getCruises();
             if ($cssFile === 'leaflet') {
                 array_push($cssFileArray, 'http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css');
                 array_push($cssFileArray, 'https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css');
+                array_push($cssFileArray, 'https://cdn.jsdelivr.net/leaflet/1.0.0-beta.2/leaflet.css');
             } else {
                 array_push($cssFileArray, Url::templatePath() . "css/" . $cssFile . ".css");
             }

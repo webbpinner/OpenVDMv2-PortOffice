@@ -45,8 +45,8 @@ $(function () {
         }).setView(L.latLng(0, 0), 2);
 
         //Add basemap layer, use ESRI Oceans Base Layer
-        var worldOceanBase = L.esri.basemapLayer('Oceans'),
-            worldOceanReference = L.esri.basemapLayer('OceansLabels'),
+        var worldOceanBase = L.esri.basemapLayer('Oceans', { maxNativeZoom: 10 }),
+            worldOceanReference = L.esri.basemapLayer('OceansLabels', { maxNativeZoom: 10 }),
             gmrtBase = L.tileLayer.wms('http://gmrt.marine-geo.org/cgi-bin/mapserv?map=/public/mgg/web/gmrt.marine-geo.org/htdocs/services/map/wms_merc.map', {
                 layers: 'topo',
                 transparent: true,
@@ -91,8 +91,7 @@ $(function () {
         };
         
         L.control.layers(baseLayers, overlays).addTo(mapObject['map']);
-        
-        
+             
         return mapObject;
     }
     
