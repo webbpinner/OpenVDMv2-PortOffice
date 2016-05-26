@@ -78,7 +78,7 @@ $hooks->run('afterBody');
                 </div> <!-- navbar-header -->
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <form action="<?php echo DIR;?>setCruise" class="navbar-form navbar-right" method="POST">
+                    <form action="<?php echo DIR;?>setCruise" class="navbar-form pull-right" method="POST">
                         <input type="hidden" name="currentPage" value="<?php echo $data['page']?>"> 
                         <input type="hidden" name="currentTitle" value="<?php echo $data['title']?>"> 
                         <div class="form-group">
@@ -92,15 +92,14 @@ $hooks->run('afterBody');
                                 <option value="<?php echo $data['cruiseList'][$i]; ?>"<?php echo ' ' . (Session::get('cruiseID') == $data['cruiseList'][$i] ? 'selected':'');?>><?php echo $data['cruiseList'][$i]; ?></option>
 <?php
         }
-?>
-                            </select>
-<?php
     } else {
 ?>
-                            <select class="form-control disabled"></select>
+                            <select name="cruiseID" class="form-control disabled">
+                                <option>No Cruises Available</option>
 <?php
     }
 ?>
+                            </select>
                         </div> <!-- form-group -->
                     </form>
                     <ul class="nav navbar-nav navbar-right">

@@ -70,12 +70,14 @@ class DashboardData extends Model {
 
         $dataTypes = array();
 
-        foreach ($this->_manifestObj as $manifestItem){
-            foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
-                if (strcmp($manifestItemKey, 'type') === 0){
-                    if(!in_array($manifestItemValue,$dataTypes)){
-                        $dataTypes[] = $manifestItemValue;
-                        continue;
+        if($this->_manifestObj != null) {
+            foreach ($this->_manifestObj as $manifestItem){
+                foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
+                    if (strcmp($manifestItemKey, 'type') === 0){
+                        if(!in_array($manifestItemValue,$dataTypes)){
+                            $dataTypes[] = $manifestItemValue;
+                            continue;
+                        }
                     }
                 }
             }
@@ -88,17 +90,18 @@ class DashboardData extends Model {
 
         $dataObjects = array();
         
-        foreach ($this->_manifestObj as $manifestItem) {
-            foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
-                if (strcmp($manifestItemKey, 'type') === 0){
-                    if(strcmp($manifestItemValue, $dataType) === 0) {
-                        $dataObjects[] = $manifestItem;
-                        continue;
+        if($this->_manifestObj != null) {
+            foreach ($this->_manifestObj as $manifestItem) {
+                foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
+                    if (strcmp($manifestItemKey, 'type') === 0){
+                        if(strcmp($manifestItemValue, $dataType) === 0) {
+                            $dataObjects[] = $manifestItem;
+                            continue;
+                        }
                     }
                 }
             }
         }
-        
 
         if(sizeof($dataObjects) > 0) {
             $sortArray = array();
@@ -122,19 +125,21 @@ class DashboardData extends Model {
     public function getDashboardObjectContentsByJsonName($dd_json){
         $dataObjectContents = '';
         
-        $foundIt = false;
-        foreach ($this->_manifestObj as $manifestItem) {
-            foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
-                if (strcmp($manifestItemKey, 'dd_json') === 0){
-                    if(strcmp($manifestItemValue, $dd_json) === 0) {
-                        $dataObjectContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $dd_json);
-                        $foundIt = true;
-                        break;
+        if($this->_manifestObj != null) {
+            $foundIt = false;
+            foreach ($this->_manifestObj as $manifestItem) {
+                foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
+                    if (strcmp($manifestItemKey, 'dd_json') === 0){
+                        if(strcmp($manifestItemValue, $dd_json) === 0) {
+                            $dataObjectContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $dd_json);
+                            $foundIt = true;
+                            break;
+                        }
                     }
                 }
-            }
-            if($foundIt) {
-                break;
+                if($foundIt) {
+                    break;
+                }
             }
         }
         return $dataObjectContents;
@@ -143,19 +148,21 @@ class DashboardData extends Model {
     public function getDashboardObjectContentsByRawName($raw_data){
         $dataObjectContents = '';
         
-        $foundIt = false;
-        foreach ($this->_manifestObj as $manifestItem) {
-            foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
-                if (strcmp($manifestItemKey, 'raw_data') === 0){
-                    if(strcmp($manifestItemValue, $raw_data) === 0) {
-                        $dataObjectContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $manifestItem['dd_json']);
-                        $foundIt = true;
-                        break;
+        if($this->_manifestObj != null) {
+            $foundIt = false;
+            foreach ($this->_manifestObj as $manifestItem) {
+                foreach ($manifestItem as $manifestItemKey => $manifestItemValue){
+                    if (strcmp($manifestItemKey, 'raw_data') === 0){
+                        if(strcmp($manifestItemValue, $raw_data) === 0) {
+                            $dataObjectContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $manifestItem['dd_json']);
+                            $foundIt = true;
+                            break;
+                        }
                     }
                 }
-            }
-            if($foundIt) {
-                break;
+                if($foundIt) {
+                    break;
+                }
             }
         }
         return $dataObjectContents;
@@ -164,10 +171,12 @@ class DashboardData extends Model {
     public function getDashboardObjectDataTypeByJsonName($dd_json){
         $dataType = '';
         
-        foreach ($this->_manifestObj as $manifestItem) {
-            if (strcmp($manifestItem['dd_json'], $dd_json) === 0) {
-                $dataType = $manifestItem['type'];
-                break;
+        if($this->_manifestObj != null) {
+            foreach ($this->_manifestObj as $manifestItem) {
+                if (strcmp($manifestItem['dd_json'], $dd_json) === 0) {
+                    $dataType = $manifestItem['type'];
+                    break;
+                }
             }
         }
         return $dataType;
@@ -176,10 +185,12 @@ class DashboardData extends Model {
     public function getDashboardObjectDataTypeByRawName($raw_data){
         $dataType = '';
         
-        foreach ($this->_manifestObj as $manifestItem) {
-            if (strcmp($manifestItem['raw_data'], $raw_data) === 0) {
-                $dataType = $manifestItem['type'];
-                break;
+        if($this->_manifestObj != null) {
+            foreach ($this->_manifestObj as $manifestItem) {
+                if (strcmp($manifestItem['raw_data'], $raw_data) === 0) {
+                    $dataType = $manifestItem['type'];
+                    break;
+                }
             }
         }
         return $dataType;
