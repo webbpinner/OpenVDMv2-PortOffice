@@ -63,7 +63,7 @@ $data['cruiseList'] = $warehouseModel->getCruises();
 //hook for running code after body tag
 $hooks->run('afterBody');
 ?>
-
+<!-- Start of header -->
     <header>
         <nav class="navbar navbar-default">
             <div class="container-fluid" style="max-width:1400px"><!-- Brand and toggle get grouped for better mobile display -->
@@ -119,3 +119,4 @@ $hooks->run('afterBody');
     </header>
     <!-- Page Content -->
     <div class="container-fluid" style="max-width:1400px">
+<!-- End of header -->

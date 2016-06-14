@@ -9,6 +9,7 @@ use Helpers\Session;
 $hooks = Hooks::get();
 ?>
 
+<!-- Start of footer -->
     </div>
     <footer class="footer">
         <div class="container-fluid" style="max-width:1400px">

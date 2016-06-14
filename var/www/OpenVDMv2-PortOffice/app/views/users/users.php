@@ -3,47 +3,44 @@
 use Helpers\Session;
 
 ?>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel">
-                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
-                            <table class='table table-striped table-hover table-bordered responsive'>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
+                            <div class="panel">
+                                <div class="panel-body">
+                            
+                                    <table class='table table-striped table-hover table-bordered responsive'>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Action</th>
+                                        </tr>
 <?php
     if($data['users']){
         foreach($data['users'] as $row){
 ?>
-                                <tr>
-                                    <td><?php echo $row->username; ?></td>
-                                    <td>
-                                        <a href='<?php echo DIR; ?>editUser/<?php echo $row->userID; ?>'>Edit</a>
+                                        <tr>
+                                            <td><?php echo $row->username; ?></td>
+                                            <td>
+                                                <a href='<?php echo DIR; ?>editUser/<?php echo $row->userID; ?>'>Edit</a>
 <?php
             if (strcmp(Session::get('userID'), $row->userID) !== 0 ) {
 ?>
                                         / 
-                                        <a href='#confirmDeleteModal' data-toggle="modal" data-item-name="User" data-delete-url="<?php echo DIR; ?>deleteUser/<?php echo $row->userID; ?>">Delete</a>
+                                                <a href='#confirmDeleteModal' data-toggle="modal" data-item-name="User" data-delete-url="<?php echo DIR; ?>deleteUser/<?php echo $row->userID; ?>">Delete</a>
 <?php
             }
 ?>
-                                    </td>
-                                </tr>
+                                            </td>
+                                        </tr>
 <?php
         }
     }
 ?>
-                            </table>
-                            <a class="btn btn-sm btn-primary" href="<?php echo DIR; ?>addUser">Add New User</a>
+                                    </table>
+                                    <a class="btn btn-sm btn-primary" href="<?php echo DIR; ?>addUser">Add New User</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="Delete Confirmation" aria-hidden="true">
         <div class="modal-dialog">

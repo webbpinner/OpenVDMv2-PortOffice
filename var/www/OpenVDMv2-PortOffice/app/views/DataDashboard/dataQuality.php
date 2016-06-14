@@ -1,7 +1,3 @@
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel">
-                <div class="panel-body">
                     <div class="row">
 <?php
     for ($i = 0; $i < sizeof($data['dataTypes']); $i++) {
@@ -99,10 +95,6 @@
     }
 ?>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 <?php
     if($data['stats']) {
 ?>
