@@ -157,7 +157,7 @@ Set the cruise data base directory to what was created for **CruiseData**. Look 
 /*
 * Define path on webserver that contains cruise data
 */
-define('CRUISEDATA_BASEDIR', '/mnt/vault/shoreside');
+define('CRUISEDATA_BASEDIR', '/mnt/vault/Shoreside');
 
 ```
 
