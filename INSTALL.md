@@ -8,7 +8,7 @@
 At the time of this writing OpenVDMv2 - Port Office was built and tested against the Ubuntu 16.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Ubuntu 16.04 LTS is used.
 
 ###Operating System
-Goto <http://xubuntu.org/getxubuntu/>
+Goto <https://www.ubuntu.com/download>
 
 Download Uubuntu for your hardware. At the time of this writing we are using 16.04.3 (64-bit)
 
