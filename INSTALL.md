@@ -1,20 +1,20 @@
-[OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment - Port Office v2.1" 
+[OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment - Port Office v2.2" 
 
 ![OpenVDMv2PO_Logo]
-# OpenVDM - PortOffice v2.1
+# OpenVDM - PortOffice v2.2
 
 ## Install Guide
 
-At the time of this writing OpenVDMv2 - Port Office was built and tested against the Xubuntu 14.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Xubuntu 14.04 LTS is used.
+At the time of this writing OpenVDMv2 - Port Office was built and tested against the Ubuntu 16.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Ubuntu 16.04 LTS is used.
 
 ###Operating System
 Goto <http://xubuntu.org/getxubuntu/>
 
-Download Xubuntu for your hardware. At the time of this writing we are using 14.04.3 (32-bit)
+Download Uubuntu for your hardware. At the time of this writing we are using 16.04.3 (64-bit)
 
-Perform the default Xubuntu install. For these instructions the default account that is created is "Survey" and the computer name is "PortOffice".
+Perform the default Uubuntu install. For these instructions the default account that is created is "survey" and the computer name is "PortOffice".
 
-A few minutes after the install completes and the computer restarts, Xubuntu will ask to install any updates that have arrived since the install image was created. Perform these now and do not continue with these instructions until the update has completed.
+A few minutes after the install completes and the computer restarts, Ubuntu will ask to install any updates that have arrived since the install image was created. Perform these now and do not continue with these instructions until the update has completed.
 
 Before OpenVDMv2 - Port Office can be installed serveral other services and software packaged must be installed and configured.
 
@@ -26,21 +26,24 @@ To install MySQL open a terminal window and type:
 sudo apt-get install mysql-server
 ```
 
-### PHP5
-The language used to write the OpenVDMv2 web-interface is PHP.
+### PHP7
+The language used to write the OpenVDMv2-PortOffice web-interface is PHP.
 
 To install PHP open a terminal window and type:
 ```
-sudo apt-get install php5 php5-cli php5-mysql
+sudo apt-get install php7.0 php7.0-cli php7.0-mysql
 ```
 
 ###Apache2 Web-server
 
-The OpenVDM - Port Office web-application is served by the Warehouse via the Apache2 Web-Server
+The OpenVDMv2-PortOffice web-application is served by the Warehouse via the Apache2 Web-Server
 
-Apache2 is installed by Xubuntu by default but an Apache2 module must be enabled. To enable the additional module open a terminal window and type:
+Apache2 is installed by Ubuntu by default but an additional Apache2 module must be install and another module enabled. 
+
+To install/enabled the additional required modules open a terminal window and type:
 
 ```
+sudo apt-get install libapache2-mod-php7.0
 sudo a2enmod rewrite
 ```
 
