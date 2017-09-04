@@ -12,7 +12,7 @@ For more information on OpenVDMv2 Port Office please checkout <http://oceandatar
 
 ##Demo Site
 
-<http://capablesolutions.dyndns.org:8180/OpenVDMv2-PortOffice/>
+<http://138.197.8.27/OpenVDMv2-PortOffice/>
 - Username: ***admin***
 - Password: ***demo***
 
