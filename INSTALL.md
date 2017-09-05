@@ -7,7 +7,7 @@
 
 At the time of this writing OpenVDMv2 - Port Office was built and tested against the Ubuntu 16.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Ubuntu 16.04 LTS is used.
 
-###Operating System
+### Operating System
 Goto <https://www.ubuntu.com/download>
 
 Download Uubuntu for your hardware. At the time of this writing we are using 16.04.3 (64-bit)
@@ -18,7 +18,7 @@ A few minutes after the install completes and the computer restarts, Ubuntu will
 
 Before OpenVDMv2 - Port Office can be installed serveral other services and software packaged must be installed and configured.
 
-###MySQL Database Server
+### MySQL Database Server
 All of the commonly used variables, tranfer profiles, and user creditials for OpenVDM - Port Office are stored in a SQL database. This allows fast access to the stored information as well as a proven mechanism for multiple clients to change records without worry of write collisions. OpenVDM - Port Office uses the MySQL open-source database server.
 
 To install MySQL open a terminal window and type:
@@ -34,7 +34,7 @@ To install PHP open a terminal window and type:
 sudo apt-get install php7.0 php7.0-cli php7.0-mysql
 ```
 
-###Apache2 Web-server
+### Apache2 Web-server
 
 The OpenVDMv2-PortOffice web-application is served by the Warehouse via the Apache2 Web-Server
 
@@ -53,7 +53,7 @@ After enabling the module the webserver must be restarted:
 sudo service apache2 restart
 ```
 
-###OpenVDMv2 - Port Office
+### OpenVDMv2 - Port Office
 Create the Required Directories
 
 In order for OpenVDMv2 - Port Office to properly store data serveral directories must be created on the PortOffice server.
@@ -69,7 +69,7 @@ sudo mkdir -p /mnt/vault/Shoreside
 sudo chown -R survey:survey /mnt/vault/Shoreside
 ```
 
-###Download the OpenVDM Files from Github
+### Download the OpenVDM Files from Github
 
 From a terminal window type:
 
@@ -78,7 +78,7 @@ sudo apt-get install git
 git clone git://github.com/webbpinner/OpenVDMv2-PortOffice.git ~/OpenVDMv2-PortOffice
 ```
 
-###Create OpenVDMv2 Database
+### Create OpenVDMv2 Database
 
 To create a new database first connect to MySQL by typing:
 
@@ -112,7 +112,7 @@ Exit the MySQL console:
 exit
 ```
 
-##Install OpenVDMv2 - Port Office Web-Application
+## Install OpenVDMv2 - Port Office Web-Application
 
 Copy the datadashboard configuration file to the proper location.  This will require creating a directory.
 
@@ -219,11 +219,11 @@ The default username/password are: admin/demo.
 
 It is recommended to change the password as soon as possible.
 
-###Connecting OpenVDMv2 running on a vessel to OpenVDMv2 - Port Office
+### Connecting OpenVDMv2 running on a vessel to OpenVDMv2 - Port Office
 
 For security reasons the connection between OpenVDMv2 and OpenVDMv2 - Port Office must be initiated from the vessel.  The remainder of the instructions within this section are meant to be executed within the OpenVDMv2 installation on the vessel.
 
-####Configure the Shoreside Data Warehouse
+#### Configure the Shoreside Data Warehouse
 From the OpenVDMv2 web-application goto the "System" tab in the "Configuration" section.
 
 Click the "Edit" link next to Shoreside Data Warehouse (SSDW)
@@ -234,18 +234,18 @@ When complete click the "Update" button to save the changes.
 
 To verify the configuration is correct click the "Test" link next to "Shoreside Data Warehouse (SSDW)".
 
-####Enable the Required Ship-to-Shore Transfer profiles
+#### Enable the Required Ship-to-Shore Transfer profiles
 From the OpenVDMv2 web-application goto the "System" tab in the "Configuration" section.
 
 Within the **OpenVDM Specific Ship-to-Shore Transfers** panel, make sure the "Dashboard Data" AND "OpenVDM Configuration" transfers are enabled.
 
-####Manually Initiating a Ship-to-Shore Transfer
+#### Manually Initiating a Ship-to-Shore Transfer
 To manually initiate a ship-to-shore transfer goto the "Ship-to-Shore Transfers" tab in the "Configuration" section.
 
 Click the "Run Ship-to-Shore Transfer"
 
-####Automatic Ship-to-Shore Transfers
+#### Automatic Ship-to-Shore Transfers
 While OpenVDMv2 System Status is "On" AND Ship-to-Shore Tranfers are enabled, OpenVDMv2 will automatically attempt to push new data to shore every 5 minutes.
 
-####Custom Data Dashboard configuration
+#### Custom Data Dashboard configuration
 If the data dashboard running on OpenVDM has been customized and you wish to have the same look/feel with PortOffice, replace the default datadashboard.yaml file with the one used by OpenVDM.  If custom javascript has been developed to further customize the datadashboard in OpenVDM, copy those view (.php) and javascript (.js) files to the cooresponding locations in PortOffice.
