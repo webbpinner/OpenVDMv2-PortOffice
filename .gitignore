@@ -3,5 +3,4 @@
 /var/www/OpenVDMv2-PortOffice/errorlog.html
 /var/www/OpenVDMv2-PortOffice/app/Core/Config.php
 /var/www/OpenVDMv2-PortOffice/errorlog.html
-/usr/local/etc/openvdm/datadashboard.yaml.dist
-/usr/local/etc/openvdm/openvdm.yaml.dist
+/usr/local/etc/openvdm/datadashboard.yaml
