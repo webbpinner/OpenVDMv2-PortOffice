@@ -189,7 +189,7 @@ Edit the default Apache2 VHost file.
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
-Copy the text below to the end Apache2 configuration file just above `</VirtualHost>`. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
+Copy the text below to the end Apache2 VHost file just above `</VirtualHost>`. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
 
 ```
   Alias /OpenVDMv2-PortOffice /var/www/OpenVDMv2-PortOffice
