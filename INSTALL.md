@@ -118,7 +118,7 @@ Copy the datadashboard configuration file to the proper location.  This will req
 
 ```
 sudo mkdir -p /usr/local/etc/openvdm
-sudo cp -r ~/OpenVDMv2-PortOffice/usr/local/etc/openvdm/datadashboard.dist.yaml /usr/local/etc/openvdm/datadashboard.yaml
+sudo cp -r ~/OpenVDMv2-PortOffice/usr/local/etc/openvdm/datadashboard.yaml.dist /usr/local/etc/openvdm/datadashboard.yaml
 sudo chown -R root:root /usr/local/etc/openvdm
 ```
 
@@ -189,7 +189,7 @@ Edit the default Apache2 VHost file.
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 
-Copy text below into the Apache2 configuration file just above </VirtualHost>. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
+Copy the text below to the end Apache2 configuration file just above `</VirtualHost>`. You will need to alter the directory locations to match the locations selected for the CruiseData directory:
 
 ```
   Alias /OpenVDMv2-PortOffice /var/www/OpenVDMv2-PortOffice
