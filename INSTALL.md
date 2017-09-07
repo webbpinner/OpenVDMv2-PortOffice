@@ -40,17 +40,23 @@ The OpenVDMv2-PortOffice web-application is served by the Warehouse via the Apac
 
 Apache2 is installed by Ubuntu by default but additional Apache2 modules must be install and enabled. 
 
-#### PHP and rewrite
-To install/enabled the php and rewrite modules open a terminal window and type:
+#### Rewrite
+To enabled the rewrite module open a terminal window and type:
+
+```
+sudo a2enmod rewrite
+```
+
+#### PHP
+To install/enabled the php module open a terminal window and type:
 
 ```
 sudo apt-get install libapache2-mod-php7.0
-sudo a2enmod rewrite
 ```
 
 #### Yaml
 
-To install/enabled the php and rewrite modules open a terminal window and type:
+To install/enabled the yaml module open a terminal window and type:
 
 ```
 sudo apt-get install libyaml-dev
@@ -251,6 +257,12 @@ Goto to the URL for OpenVDMv2 - Port Office as defined earlier.
 The default username/password are: admin/demo.
 
 It is recommended to change the password as soon as possible.
+
+### An error has occured
+If after the install process the message "An error has occured" appears on the web-interface please refer to the errorlog file for more information on what exactly has happened.  The error log is html-formatted and can viewed in the browser at the following address:
+```
+http://<ip address>/OpenVDMv2-PortOffice/errorlog.html
+```
 
 ### Connecting OpenVDMv2 running on a vessel to OpenVDMv2 - Port Office
 
