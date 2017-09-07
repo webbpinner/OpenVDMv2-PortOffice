@@ -161,6 +161,12 @@ Copy the web-application code to a directory that can be accessed by Apache
 ```
 sudo cp -r ~/OpenVDMv2-PortOffice/var/www/OpenVDMv2-PortOffice /var/www/
 sudo chown -R root:root /var/www/OpenVDMv2-PortOffice
+```
+
+Create the web-application errorlog file
+
+```
+sudo touch /var/www/OpenVDMv2-PortOffice/errorlog.html
 sudo chmod 777 /var/www/OpenVDMv2-PortOffice/errorlog.html
 ```
 
