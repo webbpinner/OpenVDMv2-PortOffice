@@ -31,24 +31,57 @@ The language used to write the OpenVDMv2-PortOffice web-interface is PHP.
 
 To install PHP open a terminal window and type:
 ```
-sudo apt-get install php7.0 php7.0-cli php7.0-mysql
+sudo apt-get install php7.0 php7.0-cli php7.0-mysql php7.0-dev php7.0-zip php7.0-curl
 ```
 
 ### Apache2 Web-server
 
 The OpenVDMv2-PortOffice web-application is served by the Warehouse via the Apache2 Web-Server
 
-Apache2 is installed by Ubuntu by default but an additional Apache2 module must be install and another module enabled. 
+Apache2 is installed by Ubuntu by default but additional Apache2 modules must be install and enabled. 
 
-To install/enabled the additional required modules open a terminal window and type:
+#### PHP and rewrite
+To install/enabled the php and rewrite modules open a terminal window and type:
 
 ```
 sudo apt-get install libapache2-mod-php7.0
 sudo a2enmod rewrite
 ```
 
-After enabling the module the webserver must be restarted:
+#### Yaml
 
+To install/enabled the php and rewrite modules open a terminal window and type:
+
+```
+sudo apt-get install libyaml-dev
+sudo pecl install yaml-2.0.0
+```
+
+Next, create the file /etc/php/7.0/mods-available/yaml.ini
+
+```
+sudo nano /etc/php/7.0/mods-available/yaml.ini
+```
+
+Copy the following into `yaml.ini`
+```
+; configuration for php common module
+; priority=20
+extension=yaml.so
+```
+
+Enable the new module
+```
+sudo phpenmod yaml
+```
+
+Restart apache
+```
+sudo service apache2 restart
+```
+
+#### Finally
+After installing/enabling the module the webserver must be restarted:
 ```
 sudo service apache2 restart
 ```
