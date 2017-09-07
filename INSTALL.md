@@ -81,11 +81,6 @@ Enable the new module
 sudo phpenmod yaml
 ```
 
-Restart apache
-```
-sudo service apache2 restart
-```
-
 #### Finally
 After installing/enabling the module the webserver must be restarted:
 ```
