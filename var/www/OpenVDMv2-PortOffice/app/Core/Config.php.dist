@@ -6,9 +6,9 @@
  * @author David Carr - dave@daveismyname.com
  * @author Edwin Hoksberg - info@edwinhoksberg.nl
  *
- * @version 2.2
+ * @version 2.3
  * @date June 27, 2014
- * @date updated Sept 19, 2015
+ * @date updated Sept 8, 2017
  */
 namespace Core;
 
@@ -105,7 +105,7 @@ class Config
         /*
          * Optional create a constant for the name of the site.
          */
-        define('SITETITLE', 'OpenVDM - Port Office v2.2');
+        define('SITETITLE', 'OpenVDM - Port Office v2.3');
 
         /*
          * Optional set a site email address.
