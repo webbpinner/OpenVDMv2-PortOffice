@@ -19,3 +19,12 @@ For more information on OpenVDMv2 Port Office please checkout <http://oceandatar
 ## Installation
 
 For installation instruction please read the INSTALL.md file located in this repository.
+
+## Vessel's Currently using OpenVDMv2 - PortOffice ##
+- *R/V Falkor* (Schmidt Ocean Institute)
+
+## Thanks and acknowledgments ##
+
+OpenVDMv2 - PortOffice has been made possible largely by the generosity of the Schmidt Ocean Institute (SOI) who have continuously donated to the project since 2012.  OpenVDMv2 - PortOffice is used by SOI to drive the real-time status page for the *R/V Falkor*  In addition to financial support the marine technician aboard *R/V Falkor* and SOI's shoreside support staff continue to prove themselves invaluable to the development process by identifying on OpenVDMv2 - PortOffice's deficiencies and providing ways to improve functionality.
+
+I also want to thank the UNOLS community who have helped me since the beginning by sharing their wealth of experience and technical ability.
