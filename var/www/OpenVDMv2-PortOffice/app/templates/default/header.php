@@ -83,11 +83,11 @@ $hooks->run('afterBody');
                         <input type="hidden" name="currentTitle" value="<?php echo $data['title']?>"> 
                         <div class="form-group">
 <?php
-    if(sizeof($data['cruiseList']) > 0) {
+    if(count($data['cruiseList']) > 0) {
 ?>
                             <select name="cruiseID" onchange="this.form.submit()" class="form-control">
 <?php
-        for($i=0;$i<sizeof($data['cruiseList']); $i++){
+        for($i=0;$i<count($data['cruiseList']); $i++){
 ?>
                                 <option value="<?php echo $data['cruiseList'][$i]; ?>"<?php echo ' ' . (Session::get('cruiseID') == $data['cruiseList'][$i] ? 'selected':'');?>><?php echo $data['cruiseList'][$i]; ?></option>
 <?php

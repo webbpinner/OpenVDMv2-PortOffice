@@ -45,7 +45,7 @@ class DashboardData extends Model {
                         $ovdmConfigContents = file_get_contents($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $this->_cruiseID . DIRECTORY_SEPARATOR . self::CONFIG_FN);
                         $ovdmConfigJSON = json_decode($ovdmConfigContents,true);
                         //Get the the directory that holds the DashboardData
-                        for($i = 0; $i < sizeof($ovdmConfigJSON['extraDirectoriesConfig']); $i++){
+                        for($i = 0; $i < count($ovdmConfigJSON['extraDirectoriesConfig']); $i++){
                             if(strcmp($ovdmConfigJSON['extraDirectoriesConfig'][$i]['name'], 'Dashboard Data') === 0){
                                 $dataDashboardList = scandir($this->_cruiseDataDir . DIRECTORY_SEPARATOR . $this->_cruiseID . DIRECTORY_SEPARATOR . $ovdmConfigJSON['extraDirectoriesConfig'][$i]['destDir']);
                                 foreach ($dataDashboardList as $dataDashboardKey => $dataDashboardValue){
@@ -103,7 +103,7 @@ class DashboardData extends Model {
             }
         }
 
-        if(sizeof($dataObjects) > 0) {
+        if(count($dataObjects) > 0) {
             $sortArray = array();
 
             foreach($dataObjects as $dataObject){
@@ -241,7 +241,7 @@ class DashboardData extends Model {
         
         $dataObjects = $this->getDashboardObjectsByTypes($dataType);
         
-        if(sizeof($dataObjects) === 0){
+        if(count($dataObjects) === 0){
             $return[0]->error = 'No objects found of type ' . $dataType;
             return $return;
         }
@@ -249,7 +249,7 @@ class DashboardData extends Model {
         $dataTypeStatsObj = array((object)array());
         
         $init = false;
-        for ($i=0; $i < sizeof($dataObjects); $i++) {
+        for ($i=0; $i < count($dataObjects); $i++) {
             $dataFileStatsObj = $this->getDashboardObjectStatsByJsonName($dataObjects[$i]['dd_json']);
             
             if($dataFileStatsObj[0]->error) {
@@ -260,7 +260,7 @@ class DashboardData extends Model {
                     $dataTypeStatsObj = $dataFileStatsObj;
                     $init = true;
                 } else {
-                    for ($j=0; $j < sizeof($dataFileStatsObj); $j++) {
+                    for ($j=0; $j < count($dataFileStatsObj); $j++) {
                         switch ($dataFileStatsObj[$j]->statType){
                             case "timeBounds":
                                 #Start Time
@@ -342,7 +342,7 @@ class DashboardData extends Model {
         $fileCountStat->statType = "totalValue";
         $fileCountStat->statName = "File Count";
         $fileCountStat->statData = array();
-        $fileCountStat->statData[0] = sizeof($dataObjects);
+        $fileCountStat->statData[0] = count($dataObjects);
         
         array_unshift($dataTypeStatsObj, $fileCountStat);
         

@@ -10,7 +10,7 @@ use Core\Language;
                 <div class="panel-body">
                     <div class="row">
 <?php
-    for($i = 0; $i < sizeof($data['dataTypes']); $i++){
+    for($i = 0; $i < count($data['dataTypes']); $i++){
 ?>
                         <div class="col-lg-4 col-md-6">
                             <div class="panel panel-default">

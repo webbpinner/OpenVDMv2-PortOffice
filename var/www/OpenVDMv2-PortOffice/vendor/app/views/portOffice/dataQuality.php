@@ -10,7 +10,7 @@ use Core\Language;
                 <div class="panel-body">
                     <div class="row">
 <?php
-    for ($i = 0; $i < sizeof($data['dataTypes']); $i++) {
+    for ($i = 0; $i < count($data['dataTypes']); $i++) {
 ?>
                         <div class="col-lg-12">
                             <div class="panel panel-default">
@@ -20,7 +20,7 @@ use Core\Language;
                                         <tr>
                                             <th>Filename</th>
 <?php
-        for ($k = 0; $k < sizeof($data['dataObjectsQualityTests'][$i][0]); $k++) {
+        for ($k = 0; $k < count($data['dataObjectsQualityTests'][$i][0]); $k++) {
 ?>
                                             <th width=20px><?php echo $data['dataObjectsQualityTests'][$i][0][$k]->testName;?></th>
 <?php
@@ -29,12 +29,12 @@ use Core\Language;
                                             <th class="text-center" width=20px>Stats</th>
                                         </tr>
 <?php
-        for ($j = 0; $j < sizeof($data['dataObjectsQualityTests'][$i]); $j++) {
+        for ($j = 0; $j < count($data['dataObjectsQualityTests'][$i]); $j++) {
 ?>
                                         <tr>
                                             <td><?php echo $data['dataObjects'][$i][$j]['raw_data']; ?></td>
 <?php
-            for ($k = 0; $k < sizeof($data['dataObjectsQualityTests'][$i][$j]); $k++) {
+            for ($k = 0; $k < count($data['dataObjectsQualityTests'][$i][$j]); $k++) {
 ?>
                                             <td>
 <?php
@@ -75,10 +75,10 @@ use Core\Language;
                                                                            
 ?>
                                         <tr>
-                                            <td class="text-right" colspan=<?php echo sizeof($data['dataObjectsQualityTests'][$i][0])+2;?>>
+                                            <td class="text-right" colspan=<?php echo count($data['dataObjectsQualityTests'][$i][0])+2;?>>
 <?php
         $statsAvailable = false;
-        for ($k = 0; $k < sizeof($data['dataObjectsStats'][$i]); $k++) {
+        for ($k = 0; $k < count($data['dataObjectsStats'][$i]); $k++) {
             if($data['dataObjectsStats'][$i][$k]){
                 $statsAvailable = true;
                 break;
@@ -122,7 +122,7 @@ use Core\Language;
                 <table class="table">
                     <tbody>
 <?php
-    for($i=0; $i<(sizeof($data['stats'])); $i++){
+    for($i=0; $i<(count($data['stats'])); $i++){
 ?>
                         <tr>
                             <td><?php echo $data['stats'][$i]->statName; ?>:</td>
