@@ -26,12 +26,18 @@ To install MySQL open a terminal window and type:
 sudo apt-get install mysql-server
 ```
 
-### PHP7
-The language used to write the OpenVDMv2-PortOffice web-interface is PHP.
+### PHP7.3
+The language used to write the OpenVDMv2 web-interface is PHP.
 
 To install PHP open a terminal window and type:
 ```
-sudo apt-get install php7.0 php7.0-cli php7.0-mysql php7.0-dev php7.0-zip php7.0-curl
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/apache2
+sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/pkg-gearman
+
+sudo apt-get update
+
+sudo apt-get install php7.3 php7.3-cli php7.3-mysql php7.3-dev php7.3-zip php7.3-curl
 ```
 
 #### Yaml
@@ -78,7 +84,7 @@ sudo a2enmod rewrite
 To install/enabled the php module open a terminal window and type:
 
 ```
-sudo apt-get install libapache2-mod-php7.0
+sudo apt-get install libapache2-mod-php7.3
 ```
 
 #### Finally

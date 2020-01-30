@@ -21,9 +21,9 @@ $loadingImage = '<img height="50" src="' . Url::templatePath() . 'images/loading
                     <div class="row">
                         <div class="col-lg-12">
 <?php
-    for($i = 0; $i < sizeof($data['placeholders']); $i++){
-        for($j=0; $j < sizeof($data['placeholders'][$i]->dataFiles); $j++){
-            $filecount += sizeof($data['placeholders'][$i]->dataFiles[$j]);
+    for($i = 0; $i < count($data['placeholders']); $i++){
+        for($j=0; $j < count($data['placeholders'][$i]->dataFiles); $j++){
+            $filecount += count($data['placeholders'][$i]->dataFiles[$j]);
         }
 ?>
                             <div class="panel panel-default">
@@ -35,19 +35,19 @@ $loadingImage = '<img height="50" src="' . Url::templatePath() . 'images/loading
                                     <div class="objectList" id="<?php echo $data['placeholders'][$i]->id;?>_objectList-placeholder">
                                         <form>                                            
 <?php
-        for($j = 0; $j < sizeof($data['placeholders'][$i]->dataTypes); $j++){
+        for($j = 0; $j < count($data['placeholders'][$i]->dataTypes); $j++){
 ?>                                     
                                             <div class="row">
                                                 <div class="col-lg-12"><strong><?php echo $data['placeholders'][$i]->dataFiles[$j][0]['type']; ?></strong></div>
 <?php
-            if(sizeof($data['placeholders'][$i]->dataFiles[$j]) > 0){
+            if(count($data['placeholders'][$i]->dataFiles[$j]) > 0){
                 if(strcmp($data['placeholders'][$i]->dataTypes[$j], 'geoJSON')===0) {
 ?>
                                                 <div class='col-lg-12'>
                                                     <input class='lp-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]->dataFiles[$j][0]['type'];?>" checked> Latest Position
                                                 </div></br>
 <?php
-                    for($k = sizeof($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
+                    for($k = count($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
 ?>                              
                                                 <div class='col-lg-4 col-sm-6'>
                                                     <input class='<?php echo $data['placeholders'][$i]->dataTypes[$j]; ?>-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['dd_json'];?>" checked> <?php echo end(explode('/',$data['placeholders'][$i]->dataFiles[$j][$k]['raw_data']));?>
@@ -55,7 +55,7 @@ $loadingImage = '<img height="50" src="' . Url::templatePath() . 'images/loading
 <?php
                     }
                 } else if(strcmp($data['placeholders'][$i]->dataTypes[$j], 'tms')===0) {
-                    for($k = sizeof($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
+                    for($k = count($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
 ?>                              
                                                 <div class='col-lg-4 col-sm-6'>
                                                     <input class='<?php echo $data['placeholders'][$i]->dataTypes[$j]; ?>-checkbox' type="checkbox" value="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['dd_json'];?>" checked> <?php echo end(explode('/',$data['placeholders'][$i]->dataFiles[$j][$k]['raw_data']));?>
@@ -66,10 +66,10 @@ $loadingImage = '<img height="50" src="' . Url::templatePath() . 'images/loading
 ?>
                                                 <div class="form-group">
 <?php
-                    for($k = sizeof($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
+                    for($k = count($data['placeholders'][$i]->dataFiles[$j])-1; $k >= 0; $k--){
 ?>                              
                                                     <div class='col-lg-4 col-sm-6'>
-                                                        <input class='<?php echo $data['placeholders'][$i]->dataTypes[$j]; ?>-radio' name="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['type'];?>" type="radio" value="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['dd_json'];?>"  <?php echo ($k === sizeof($data['placeholders'][$i]->dataFiles[$j])-1? 'checked' : '');   ?>> <?php echo end(explode('/',$data['placeholders'][$i]->dataFiles[$j][$k]['raw_data']));?>
+                                                        <input class='<?php echo $data['placeholders'][$i]->dataTypes[$j]; ?>-radio' name="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['type'];?>" type="radio" value="<?php echo $data['placeholders'][$i]->dataFiles[$j][$k]['dd_json'];?>"  <?php echo ($k === count($data['placeholders'][$i]->dataFiles[$j])-1? 'checked' : '');   ?>> <?php echo end(explode('/',$data['placeholders'][$i]->dataFiles[$j][$k]['raw_data']));?>
                                                     </div>
 <?php
                     }

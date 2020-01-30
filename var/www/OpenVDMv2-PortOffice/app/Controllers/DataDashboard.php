@@ -48,7 +48,7 @@ class DataDashboard extends Controller {
 
         View::renderTemplate('header', $data);
         View::renderTemplate('dataDashboardHeader', $data);
-        if( sizeof($data['dataTypes'])>0){
+        if( count($data['dataTypes'])>0){
             View::render('DataDashboard/main', $data);
         } else {
             View::render('DataDashboard/noData', $data);
@@ -67,21 +67,21 @@ class DataDashboard extends Controller {
         $data['dataWarehouseApacheDir'] = $this->_warehouseModel->getShoresideDataWarehouseApacheDir();
 
         $data['css'] = array();
-        if ($tab['cssArray'] && sizeof($tab['cssArray'])>0) {
+        if ($tab['cssArray'] && count($tab['cssArray'])>0) {
             foreach ($tab['cssArray'] as $cssFile) {
                 array_push($data['css'], $cssFile);
             }
         }
         
         $data['javascript'] = array();
-        if ($tab['jsArray'] && sizeof($tab['jsArray'])>0) {
+        if ($tab['jsArray'] && count($tab['jsArray'])>0) {
             foreach ($tab['jsArray'] as $jsFile) {
                 array_push($data['javascript'], $jsFile);
             }
         }
         
         $data['placeholders'] = array();
-        if ($tab['placeholderArray'] && sizeof($tab['placeholderArray'])>0) {
+        if ($tab['placeholderArray'] && count($tab['placeholderArray'])>0) {
             foreach ($tab['placeholderArray'] as $placeholder) {
                 $placeholder['dataFiles'] = array();
                 foreach ($placeholder['dataArray'] as $dataObj) {
@@ -93,9 +93,9 @@ class DataDashboard extends Controller {
         }
         
         $noDataFiles = true;
-        for($i = 0; $i < sizeof($data['placeholders']); $i++) {
-            for($j = 0; $j < sizeof($data['placeholders'][$i]['dataFiles']); $j++) {
-                if(sizeof($data['placeholders'][$i]['dataFiles'][$j]) > 0) {
+        for($i = 0; $i < count($data['placeholders']); $i++) {
+            for($j = 0; $j < count($data['placeholders'][$i]['dataFiles']); $j++) {
+                if(count($data['placeholders'][$i]['dataFiles'][$j]) > 0) {
                     $noDataFiles = false;
                     break;
                 }
@@ -132,11 +132,11 @@ class DataDashboard extends Controller {
         $data['dataObjectsQualityTests'] = array();
         $data['dataObjectsStats'] = array();
         
-        for($i = 0; $i < sizeof($data['dataTypes']); $i++) {
+        for($i = 0; $i < count($data['dataTypes']); $i++) {
             array_push($data['dataObjects'], $this->_dashboardDataModel->getDashboardObjectsByTypes($data['dataTypes'][$i]));
             array_push($data['dataObjectsQualityTests'], array());
             array_push($data['dataObjectsStats'], array());
-            for($j = 0; $j < sizeof($data['dataObjects'][$i]); $j++) {
+            for($j = 0; $j < count($data['dataObjects'][$i]); $j++) {
                 //var_dump($dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsQualityTests'][$i], $this->_dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsStats'][$i], $this->_dashboardDataModel->getDashboardObjectStatsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
@@ -146,7 +146,7 @@ class DataDashboard extends Controller {
         View::renderTemplate('header', $data);
         View::renderTemplate('dataDashboardHeader', $data);
 
-        if( sizeof($data['dataTypes'])>0){
+        if( count($data['dataTypes'])>0){
             View::render('DataDashboard/dataQuality', $data);
         } else {
             View::render('DataDashboard/noData', $data);
@@ -167,11 +167,11 @@ class DataDashboard extends Controller {
         $data['dataObjectsQualityTests'] = array();
         $data['dataObjectsStats'] = array();
         
-        for($i = 0; $i < sizeof($data['dataTypes']); $i++) {
+        for($i = 0; $i < count($data['dataTypes']); $i++) {
             array_push($data['dataObjects'], $this->_dashboardDataModel->getDashboardObjectsByTypes($data['dataTypes'][$i]));
             array_push($data['dataObjectsQualityTests'], array());
             array_push($data['dataObjectsStats'], array());
-            for($j = 0; $j < sizeof($data['dataObjects'][$i]); $j++) {
+            for($j = 0; $j < count($data['dataObjects'][$i]); $j++) {
                 //var_dump($dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsQualityTests'][$i], $this->_dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsStats'][$i], $this->_dashboardDataModel->getDashboardObjectStatsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
@@ -202,11 +202,11 @@ class DataDashboard extends Controller {
         $data['dataObjectsQualityTests'] = array();
         $data['dataObjectsStats'] = array();
         
-        for($i = 0; $i < sizeof($data['dataTypes']); $i++) {
+        for($i = 0; $i < count($data['dataTypes']); $i++) {
             array_push($data['dataObjects'], $this->_dashboardDataModel->getDashboardObjectsByTypes($data['dataTypes'][$i]));
             array_push($data['dataObjectsQualityTests'], array());
             array_push($data['dataObjectsStats'], array());
-            for($j = 0; $j < sizeof($data['dataObjects'][$i]); $j++) {
+            for($j = 0; $j < count($data['dataObjects'][$i]); $j++) {
                 //var_dump($dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsQualityTests'][$i], $this->_dashboardDataModel->getDashboardObjectQualityTestsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
                 array_push($data['dataObjectsStats'][$i], $this->_dashboardDataModel->getDashboardObjectStatsByJsonName($data['dataObjects'][$i][$j]['dd_json']));
