@@ -69,7 +69,7 @@ class Warehouse extends Model {
             }
             #var_dump($this->_cruises);
 
-            if(count($this->_cruises) > 0) {
+            if(is_array($this->_cruises) && count($this->_cruises) > 0) {
                 rsort($this->_cruises);
             }
             return $this->_cruises;

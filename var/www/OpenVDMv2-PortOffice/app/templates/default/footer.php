@@ -61,6 +61,7 @@ if (isset($data['javascript'])){
             array_push($jsFileArray, 'http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js');
             array_push($jsFileArray, 'https://cdn.jsdelivr.net/leaflet.esri/1.0.3/esri-leaflet.js');
             array_push($jsFileArray, 'https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js');
+            array_push($jsFileArray, 'https://cdn.jsdelivr.net/npm/leaflet-easyprint@2.1.9/dist/bundle.min.js');
         } else if ($jsFile === 'highcharts') {
             array_push($jsFileArray, 'https://code.highcharts.com/highcharts.js');
         } else if ($jsFile === 'highcharts-exporting') {
