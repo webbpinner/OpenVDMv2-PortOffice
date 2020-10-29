@@ -1,16 +1,13 @@
-[OpenVDMv2PO_Logo]: http://www.oceandatarat.org/wp-content/uploads/2015/10/openVDMv2PO_Logo_long.png "Open Vessel Data Managment - Port Office v2.2" 
-
-![OpenVDMv2PO_Logo]
 # OpenVDM - PortOffice v2.2
 
 ## Install Guide
 
-At the time of this writing OpenVDMv2 - Port Office was built and tested against the Ubuntu 16.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Ubuntu 16.04 LTS is used.
+At the time of this writing OpenVDMv2 - Port Office was built and tested against the Ubuntu 18.04 LTS operating system. It may be possible to build against other linux-based operating systems however for the purposes of this guide the instructions will assume Ubuntu 18.04 LTS is used.
 
 ### Operating System
 Goto <https://www.ubuntu.com/download>
 
-Download Uubuntu for your hardware. At the time of this writing we are using 16.04.3 (64-bit)
+Download Uubuntu for your hardware. At the time of this writing we are using 18.04 (64-bit)
 
 Perform the default Uubuntu install. For these instructions the default account that is created is "survey" and the computer name is "PortOffice".
 
@@ -37,34 +34,7 @@ sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/pkg-gearman
 
 sudo apt-get update
 
-sudo apt-get install php7.3 php7.3-cli php7.3-mysql php7.3-dev php7.3-zip php7.3-curl
-```
-
-#### Yaml
-
-To install/enabled the yaml php   module open a terminal window and type:
-
-```
-sudo apt-get install libyaml-dev
-sudo pecl install yaml-2.0.0
-```
-
-Next, create the file /etc/php/7.0/mods-available/yaml.ini
-
-```
-sudo nano /etc/php/7.0/mods-available/yaml.ini
-```
-
-Copy the following into `yaml.ini`
-```
-; configuration for php yaml module
-; priority=20
-extension=yaml.so
-```
-
-Enable the new module
-```
-sudo phpenmod yaml
+sudo apt-get install php7.3 php7.3-cli php7.3-mysql php7.3-dev php7.3-zip php7.3-curl php-yaml
 ```
 
 ### Apache2 Web-server
@@ -123,7 +93,7 @@ git clone git://github.com/webbpinner/OpenVDMv2-PortOffice.git ~/OpenVDMv2-PortO
 To create a new database first connect to MySQL by typing:
 
 ```
-mysql -h localhost -u root -p
+sudo mysql -h localhost -u root
 ```
 
 Once connected to MySQL, create the database by typing:
