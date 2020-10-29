@@ -21,7 +21,7 @@ class Warehouse extends Model {
     
     public function getCruises(){
         
-        if (is_array($this->_cruises) && count($this->_cruises)) {
+        if (!is_array($this->_cruises) || count($this->_cruises)) {
         
             $baseDir = $this->getShoresideDataWarehouseBaseDir();
             #var_dump($baseDir);
