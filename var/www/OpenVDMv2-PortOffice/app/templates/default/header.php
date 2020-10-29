@@ -83,7 +83,7 @@ $hooks->run('afterBody');
                         <input type="hidden" name="currentTitle" value="<?php echo $data['title']?>"> 
                         <div class="form-group">
 <?php
-    if(count($data['cruiseList']) > 0) {
+    if(is_array($data['cruiseList']) && count($data['cruiseList']) > 0) {
 ?>
                             <select name="cruiseID" onchange="this.form.submit()" class="form-control">
 <?php
